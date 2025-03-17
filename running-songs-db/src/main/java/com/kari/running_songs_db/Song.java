@@ -1,50 +1,69 @@
 package com.kari.running_songs_db;
 
+import jakarta.persistence.*;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+
+@Entity   // This tells Spring that this is an entity class
 public class Song {
 
+    @Id// This marks the field as the primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String title;
     private String artist;
     private String genre;
-    private int bpm;
+    private Integer bpm;
 
-//Constructor
-public Song(String title, String artist, String genre, int bpm) {
-    this.title = title;
-    this.artist = artist;
-    this.genre = genre;
-    this.bpm = bpm;
-}
+    // Constructors, getters, and setters
+    public Song() {} //JPA requires a no-argument constructor
 
-//Getters and Setters
-public String getTitle() {
-    return title;
-}
+    public Song(String title, String artist, String genre, Integer bpm) {
+        this.title = title;
+        this.artist = artist;
+        this.genre = genre;
+        this.bpm = bpm;
+    }
 
-public void setTitle(String title) {
-    this.title = title;
-}
+    public Long getId() {
+        return id;
+    }
 
-public String getArtist() {
-    return artist;
-}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-public void setArtist(String artist) {
-    this.artist = artist;
-}
+    public String getTitle() {
+        return title;
+    }
 
-public String getGenre() {
-    return genre;
-}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-public void setGenre(String genre) {
-    this.genre = genre;
-}
+    public String getArtist() {
+        return artist;
+    }
 
-public int getBpm() {
-    return bpm;
-}
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
 
-public void setBpm(int bpm) {
-    this.bpm = bpm;
-}
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public Integer getBpm() {
+        return bpm;
+    }
+
+    public void setBpm(Integer bpm) {
+        this.bpm = bpm;
+    }
 }
